@@ -8,8 +8,6 @@ function calculate(a: number, b: number, operator: string): number | string {
     return a * b;
   } else if (operator === "divide") {
     return a / b;
-  } else if (operator === "mod") {
-    return "Invalid operator";
   } else {
     return "Invalid operator";
   }
@@ -28,9 +26,6 @@ function calculate(a: number, b: number, operator: string): number | string {
       break;
     case "divide":
       result = a / b;
-      break;
-    case "mod":
-      result = "Invalid operator";
       break;
     default:
       result = "Invalid operator";
