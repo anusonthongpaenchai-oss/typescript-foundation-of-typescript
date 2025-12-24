@@ -94,6 +94,23 @@ const ordersSample = [
 ];
 
 //Start Coding Here
+type OrderStatus = "pending" | "shipped" | "delivered" | "cancelled"
+
+type Order = {
+  orderId: string;
+  status: OrderStatus;
+  productName: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+// function totalByStatusWithDiscount(orders: Order, targetStatus: OrderStatus): number{
+//   const checkStatus = orders.status? orders
+//   return  0
+// }
+
+const orders: Order[] = ordersSample;
 
 const totalShipped = totalByStatusWithDiscount(orders, "shipped");
 console.log("Total for shipped orders with discount:", totalShipped);
