@@ -1,4 +1,4 @@
-const ordersSample = [
+const ordersSample: Order[] = [
   {
     orderId: "ORD001",
     status: "pending",
@@ -94,7 +94,7 @@ const ordersSample = [
 ];
 
 //Start Coding Here
-type OrderStatus = "pending" | "shipped" | "delivered" | "cancelled"
+type OrderStatus = "pending" | "shipped" | "delivered" | "cancelled";
 
 type Order = {
   orderId: string;
@@ -103,14 +103,35 @@ type Order = {
   price: number;
   quantity: number;
   discount?: number;
+};
+
+function totalByStatusWithDiscount(
+  orders: Order[],
+  targetStatus: OrderStatus
+): number {
+  const validStatuses: OrderStatus[] = [
+    "pending",
+    "shipped",
+    "delivered",
+    "cancelled",
+  ];
+  if (!validStatuses.includes(targetStatus)) {
+    console.log(`Warning: Invalid status '${targetStatus}'. Returning 0.`);
+    return 0;
+  }
+
+  let total = 0;
+  for (const order of orders) {
+    if (order.status === targetStatus) {
+      const discount = order.discount ?? 0;
+      const netPrice = order.price * order.quantity - discount;
+      total += netPrice;
+    }
+  }
+  return total;
 }
 
-// function totalByStatusWithDiscount(orders: Order, targetStatus: OrderStatus): number{
-//   const checkStatus = orders.status? orders
-//   return  0
-// }
-
-const orders: Order[] = ordersSample;
+const orders: Array<Order> = ordersSample;
 
 const totalShipped = totalByStatusWithDiscount(orders, "shipped");
 console.log("Total for shipped orders with discount:", totalShipped);
@@ -123,3 +144,4 @@ console.log("Total for delivered orders:", totalDelivered);
 
 const totalCancelled = totalByStatusWithDiscount(orders, "cancelled");
 console.log("Total for cancelled orders:", totalCancelled);
+
