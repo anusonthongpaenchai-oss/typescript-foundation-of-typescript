@@ -1,5 +1,40 @@
 function calculate(a: number, b: number, operator: string): number | string {
   //Start Coding Here
+  if (operator === "add") {
+    return a + b;
+  } else if (operator === "subtract") {
+    return a - b;
+  } else if (operator === "multiply") {
+    return a * b;
+  } else if (operator === "divide") {
+    return a / b;
+  } else if (operator === "mod") {
+    return "Invalid operator";
+  } else {
+    return "Invalid operator";
+  }
+
+  /* let result: number | string;
+
+  switch (operator) {
+    case "add":
+      result = a + b;
+      break;
+    case "subtract":
+      result = a - b;
+      break;
+    case "multiply":
+      result = a * b;
+      break;
+    case "divide":
+      result = a / b;
+      break;
+    case "mod":
+      result = "Invalid operator";
+      break;
+    default:
+      result = "Invalid operator";
+  }*/
 }
 
 console.log(calculate(10, 5, "add")); // 15

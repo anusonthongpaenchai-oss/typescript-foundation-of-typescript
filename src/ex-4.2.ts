@@ -1,8 +1,12 @@
 function processData(data: unknown): string {
-  return data.toUpperCase();
+  if (typeof data === "string") {
+    return data.toUpperCase();
+  } else {
+    return "Not a string";
+  }
 }
 
 console.log(processData("hello")); // ควรได้ "HELLO"
 console.log(processData(123)); // ควรได้ "Not a string"
 
-// Error ที่เจอคือ
+// Error ที่เจอคือ ตัว data มีไทป์เป็น unknown เลยต้องใส่เงื่อนไขเพื่อให้สามารถทำงานได้
